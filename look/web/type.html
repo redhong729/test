@@ -708,6 +708,7 @@
 <script>
 
 $(function(){
+	var k = 1;
 	window.onscroll=function(){
         if(document.body.scrollTop>100 || document.documentElement.scrollTop>100){
             $(".snb_wrap").css({"position":"fixed" , "top":"0px" ,"width" : "100%"});
@@ -717,22 +718,27 @@ $(function(){
             $(".snb_wrap").css({"position":"static"});
         }
 
-        $(".daily_type").each(function(i){
-        	var h = $(this).offset().top -100;
-        	if(document.body.scrollTop> h || document.documentElement.scrollTop>h){
-        		var k = (i<0)?0:i;
-        		$(".typename").eq(k).addClass("on").siblings().removeClass("on");
-        	}
-        })
+
+	if(k){
+			$(".daily_type").each(function(i){
+				var h = $(this).offset().top -100;
+				if(document.body.scrollTop> h || document.documentElement.scrollTop>h){
+					var k = (i<0)?0:i;
+					$(".typename").eq(k).addClass("on").siblings().removeClass("on");
+				}
+			})
+		}
+
     }
 
     $.scrollto = function(scrolldom,scrolltime) {
-		
+		$('html,body').animate({scrollTop:0},500);
 		$(scrolldom).click( function(){ 
+			k = 0;
 			var scrolltodom = $(this).attr("date-scroll");
 			$(this).addClass("on").siblings().removeClass("on");
 			$('html,body').animate({
-				scrollTop:$(scrolltodom).offset().top -50},scrolltime
+				scrollTop:$(scrolltodom).offset().top -50},scrolltime,function(){k=1}
 			);
 			return false;
 		}); 
