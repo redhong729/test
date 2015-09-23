@@ -62,7 +62,7 @@ textarea{resize:none}
 .card_front .bd{background-color: #fff;height: 70px;padding:5px 12px;}
 .card_front .bd .tit{font-size: 20px;}
 .card_front .bd .info{color:#999;}
-.card_front .bd .num{text-align:right;font-size: 18px;}
+.card_front .bd .num{text-align:right;font-size: 18px;color:#9b63b5;}
 .card_front .bd .ico_star1{margin:3px 3px 0 0;}
 
 .card_back .info.genre{top:21px;left:21px;width:168px;height:169px}
@@ -101,7 +101,7 @@ textarea{resize:none}
 .card_item .card_back .info .author{margin-top:5px;padding:0;font-size:13px}
 .card_item .card_back .info .summary{font-size:13px;line-height:15px}
 .card_item .card_back .info .line{display:block;width:16px;height:1px;margin:12px 0 15px;background:#fff;opacity:.5;filter:alpha(opacity=50)}
-.card_item .card_back.g_fantasy{background:#8901e1}
+.card_item .card_back.g_fantasy{background:#222222}
 .card_item .card_back.g_action{background:#006afb}
 .card_item .card_back.g_drama{background:#12c2ab}
 .card_item .card_back.g_romance{background:#fd337f}

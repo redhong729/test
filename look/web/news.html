@@ -1040,6 +1040,7 @@ function getWeek(){
 	return week[new Date().getDay()];
 }
 $(function(){
+	var k = 1;
 	var weekday = getWeek();
 	$("#"+weekday).addClass("on");
 
@@ -1049,30 +1050,32 @@ $(function(){
 	});
 
 	window.onscroll=function(){
-        if(document.body.scrollTop>100 || document.documentElement.scrollTop>100){
-            $(".snb_wrap").css({"position":"fixed" , "top":"0px" ,"width" : "100%"});
-            $(".snb_inner").css({"width" : "100%"});
-        }
-        else{
-            $(".snb_wrap").css({"position":"static"});
-        }
-
-        if(document.body.scrollTop>20+parseInt($(".dailylist").height()) || document.documentElement.scrollTop>20+parseInt($(".dailylist").height())){
-        	$(".completed").addClass("on");
-        	$(".ongoing").removeClass("on");
-        }else{
-        	$(".ongoing").addClass("on");
-        	$(".completed").removeClass("on");
-        }
+		 if(document.body.scrollTop>100 || document.documentElement.scrollTop>100){
+	            $(".snb_wrap").css({"position":"fixed" , "top":"0px" ,"width" : "100%"});
+	            $(".snb_inner").css({"width" : "100%"});
+	        }
+	        else{
+	            $(".snb_wrap").css({"position":"static"});
+	        }
+		if(k){
+	        if(document.body.scrollTop>20+parseInt($(".dailylist").height()) || document.documentElement.scrollTop>20+parseInt($(".dailylist").height())){
+	        	$(".completed").addClass("on");
+	        	$(".ongoing").removeClass("on");
+	        }else{
+	        	$(".ongoing").addClass("on");
+	        	$(".completed").removeClass("on");
+	        }
+    	}
     }
 
     $.scrollto = function(scrolldom,scrolltime) {
 
 		$(scrolldom).click( function(){ 
+			k = 0;
 			var scrolltodom = $(this).attr("date-scroll");
 			$(this).addClass("on").siblings().removeClass("on");
 			$('html,body').animate({
-				scrollTop:$(scrolltodom).offset().top -150},scrolltime
+				scrollTop:$(scrolltodom).offset().top -100},scrolltime,function(){k=1}
 			);
 			return false;
 		}); 
